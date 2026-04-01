@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MUKUNZI NSHUTI Presley — Developer & Designer</title>
+  <title>John Doe — Developer & Designer</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -604,7 +604,7 @@
 
   <!-- NAV -->
   <nav>
-    <div class="logo">MUKUNZI NSHUTI<span>.</span>Presley</div>
+    <div class="logo">MUKUNZI<span>.</span>NSHUTI<span>.</span>Presley</div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -617,7 +617,7 @@
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-left">
-      <p class="hero-label">Available for work · 2025</p>
+      <p class="hero-label">Available for work · 2026</p>
       <h1>Frontend<br><em>Developer</em><br>&amp; Designer</h1>
       <p class="hero-sub">I craft beautiful, functional interfaces — and design the visuals that make them unforgettable.</p>
       <div class="hero-ctas">
@@ -628,7 +628,7 @@
     <div class="hero-deco">
       <div class="deco-ring">
         <div class="deco-inner">
-          <div class="deco-big">MNP</div>
+          <div class="deco-big">JD</div>
         </div>
         <div class="deco-tags">
           <span class="deco-tag">Developer</span>
@@ -763,7 +763,7 @@
       <h2 class="section-title">Start a<br><em>conversation</em></h2>
       <p>Have a project in mind? I'd love to hear about it. Reach out and let's build something great together.</p>
       <div class="contact-detail">
-        <!-- <a><span class="__cf_email__" data-cfemail="472f222b2b28072d282f292328226924282a">[email&#160;protected]</span></a> -->
+        <!-- <a href="/cdn-cgi/l/email-protection#1d75787171725d77727573797278337e7270"><span class="__cf_email__" data-cfemail="472f222b2b28072d282f292328226924282a">[email&#160;protected]</span></a> -->
         <a href="https://github.com/pres-010">GitHub</a>
         <a href="https://youtube.com/@NshutiPresley">You Tube</a>
         <a href="#">Twitter / X</a>
@@ -790,7 +790,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2025 MUKUNZI NSHUTI Presley — All rights reserved</p>
+    <p>© 2026 MUKUNZI NSHUTI Presley — All rights reserved</p>
     <div class="social-links">
       <a href="https://github.com/pres-010">GitHub</a>
       <a href="https://youtube.com/@NshutiPresley">You Tube</a>
@@ -799,6 +799,57 @@
     </div>
   </footer>
 
+  <script>
+    const STORAGE_KEY = 'cms_messages';
 
+    function loadMessages() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+      catch { return []; }
+    }
+
+    function saveMessages(msgs) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(msgs));
+    }
+
+    document.querySelector('.submit-btn').addEventListener('click', function () {
+      const nameEl    = document.getElementById('name');
+      const emailEl   = document.getElementById('email');
+      const messageEl = document.getElementById('message');
+      const btn       = this;
+
+      const name    = nameEl.value.trim();
+      const email   = emailEl.value.trim();
+      const message = messageEl.value.trim();
+
+      if (!name || !email || !message) {
+        btn.textContent = 'Fill all fields';
+        btn.style.background = '#7a7060';
+        setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; }, 2000);
+        return;
+      }
+
+      const entry = {
+        id:      'msg_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
+        name,
+        email,
+        message,
+        ts:      Date.now(),
+        status:  'new',
+        note:    ''
+      };
+
+      const msgs = loadMessages();
+      msgs.unshift(entry);
+      saveMessages(msgs);
+
+      nameEl.value = '';
+      emailEl.value = '';
+      messageEl.value = '';
+
+      btn.textContent = 'Sent ✓';
+      btn.style.background = '#1a6b4a';
+      setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; }, 3000);
+    });
+  </script>
 </body>
 </html>
