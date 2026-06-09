@@ -4,12 +4,11 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', sans-serif;
-    scrollbar-color: aquamarine lavender;
 }
 
 body {
     line-height: 1.6;
-    /* background: url(./Real-background.png); */
+    background: url(./Real-background.png);
     background-repeat: no-repeat;
     background-position-y: 450px;
     background-position-x: center;
@@ -529,5 +528,4 @@ footer {
     #contactForm {
         padding: 20px;
     }
-
 }
