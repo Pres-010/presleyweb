@@ -861,6 +861,32 @@
       btn.style.background = '#1a6b4a';
       setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; }, 3000);
     });
+    const form = document.querySelector(".contact-form");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value
+    };
+
+    const response = await fetch("YOUR_WEBHOOK_URL", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+
+    if(response.ok){
+        alert("Your message has been sent!");
+        form.reset();
+    }else{
+        alert("Failed to send.");
+    }
+});
   </script>
 </body>
 </html>
